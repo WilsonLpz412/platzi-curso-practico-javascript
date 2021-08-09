@@ -101,7 +101,6 @@ function calcularPerimetroTriangulo() {
   const inputBase = document.getElementById("InputTrianguloBase");
   const base = inputBase.value;
 
-  console.log(lado1, lado2, base);
   const perimetro = perimetroTriangulo(lado1, lado2, base);
   alert(perimetro);
 }
@@ -152,7 +151,6 @@ function calcularAlturaIsosceles() {
   const inputBase = document.getElementById("InputIsoscelesBase");
   const base = inputBase.value;
 
-  console.log(lado1, lado2, base);
   const altura = alturaIsosceles(lado1, lado2, base);
   alert(altura);
 }
