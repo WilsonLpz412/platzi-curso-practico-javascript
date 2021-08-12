@@ -15,26 +15,37 @@ function priceDiscount() {
   const InputCoupon = document.getElementById("InputCoupon");
   const couponValue = InputCoupon.value;
 
-  let descuento;
+  const coupons = [
+    {
+      name: "JuanDC_es_Batman",
+      discount: 15,
+    },
+    {
+      name: "pero_no_le_digas_a_nadie",
+      discount: 30,
+    },
+    {
+      name: "es_un_secreto",
+      discount: 25,
+    },
+  ];
 
-  if (!coupons.includes(couponValue)) {
+  const isCouponValueValid = function (coupon) {
+    return coupon.name === couponValue;
+  };
+
+  const userCoupon = coupons.find(isCouponValueValid);
+
+  if (!userCoupon) {
     alert("El cupón " + couponValue + " no es válido");
-  } else if (couponValue === "JuanDC_es_Batman") {
-    descuento = 15;
-  } else if (couponValue === "pero_no_le_digas_a_nadie") {
-    descuento = 30;
-  } else if (couponValue === "es_un_secreto") {
-    descuento = 25;
+  } else {
+    const descuento = userCoupon.discount;
+    const precioConDescuento = calcularPrecioConDescuento(priceValue, descuento);
+
+    const resultPrice = document.getElementById("ResultPrice");
+    resultPrice.innerText = "El precio con descuento son: $" + precioConDescuento;
   }
 
-  const precioConDescuento = calcularPrecioConDescuento(priceValue, descuento);
-
-  const resultPrice = document.getElementById("ResultPrice");
-  resultPrice.innerText = "El precio con descuento son: $" + precioConDescuento;
 }
 
-const coupons = [
-    "JuanDC_es_Batman",
-    "pero_no_le_digas_a_nadie",
-    "es_un_secreto",
-];
+
