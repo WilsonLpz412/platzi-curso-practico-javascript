@@ -6,7 +6,6 @@ function calcularMediaAritmetica(lista) {
 
   const sumaLista = lista.reduce(
     function(valorAcumulado = 0, nuevoElemento) {
-      console.log(valorAcumulado, nuevoElemento);
       return valorAcumulado + nuevoElemento;
     }
   );
