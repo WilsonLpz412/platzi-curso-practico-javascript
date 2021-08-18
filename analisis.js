@@ -1,17 +1,6 @@
-const salariosCol = colombia.map(
-  function (personita) {
-    return personita.salary;
-  }
-);
-
-const salariosColSorted = salariosCol.sort(
-  function (salaryA, salaryB) {
-    return salaryA - salaryB;
-  }
-);
-
+// Helpers
 function esPar(numerito) {
-  return (numerito % 2 === 0);
+  return numerito % 2 === 0;
 }
 
 function calcularMediaAritmetica(lista) {
@@ -24,10 +13,11 @@ function calcularMediaAritmetica(lista) {
   return promedioLista;
 }
 
+// Cañculadora de medianas
 function medianaSalarios(lista) {
   const mitad = parseInt(lista.length / 2);
 
-  if(esPar(lista.length)) {
+  if (esPar(lista.length)) {
     const personitaMitad1 = lista[mitad - 1];
     const personitaMitad2 = lista[mitad];
 
@@ -38,7 +28,36 @@ function medianaSalarios(lista) {
     return personitaMitad;
   }
 }
-
-console.log(
-  medianaSalarios(salariosColSorted)
+// Mediana General
+const salariosCol = colombia.map(
+  function (personita) {
+    return personita.salary;
+  }
 );
+
+const salariosColSorted = salariosCol.sort(
+  function (salaryA, salaryB) {
+    return salaryA - salaryB;
+  }
+);
+
+
+medianaSalarialCol = medianaSalarios(salariosColSorted);
+
+// Mediana del top 10%
+const spliceStart = (salariosColSorted.length * 90) /100;
+const spliceCount = salariosColSorted.length - spliceStart;
+const salariosColTop10 = salariosColSorted.splice(
+  spliceStart,
+  spliceCount,
+  );
+
+const medianaTop10Col = medianaSalarios(salariosColTop10);
+
+
+
+
+console.log({
+  medianaSalarialCol,
+  medianaTop10Col,
+});
